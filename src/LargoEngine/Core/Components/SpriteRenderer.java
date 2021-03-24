@@ -1,25 +1,23 @@
 package LargoEngine.Core.Components;
 
-import LargoEngine.Core.Renderer.Texture;
 import LargoEngine.Core.Values.Color;
 import LargoEngine.Core.Values.vec2;
 
 public class SpriteRenderer extends Component {
 
     public Color color;
-    private Sprite sprite;
+    public Sprite sprite;
 
-    public SpriteRenderer() {
-
-        this.color = new Color();
-    }
-
-    public SpriteRenderer(Color color) {
+    public SpriteRenderer(Color color)
+    {
         this.color = color;
+        this.sprite = new Sprite(null);
     }
-    public SpriteRenderer(Texture texture)
+
+    public SpriteRenderer(Sprite sprite)
     {
         this.color = Color.white();
+        this.sprite = sprite;
     }
 
     @Override

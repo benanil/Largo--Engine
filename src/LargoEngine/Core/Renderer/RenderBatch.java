@@ -98,9 +98,9 @@ public class RenderBatch {
         this.sprites[index] = spr;
         this.numSprites++;
 
-        if (spr.texture != null){
-            if (!textures.contains(spr.texture)){
-                textures.add(spr.texture);
+        if (spr.sprite.texture != null){
+            if (!textures.contains(spr.sprite.texture)){
+                textures.add(spr.sprite.texture);
             }
         }
 
@@ -132,16 +132,20 @@ public class RenderBatch {
         glBindVertexArray(vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
+        glEnableVertexAttribArray(2);
+        glEnableVertexAttribArray(3);
 
         glDrawElements(GL_TRIANGLES, this.numSprites * 6, GL_UNSIGNED_INT, 0);
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
+        glEnableVertexAttribArray(2);
+        glEnableVertexAttribArray(3);
 
         glBindVertexArray(0);
 
-        for (int i=0; i < textures.size(); i++) {
-            textures.get(i).unbind();
+        for (Texture texture : textures) {
+            texture.unbind();
         }
 
         shader.Detach();
@@ -155,9 +159,9 @@ public class RenderBatch {
 
         int textId = 0;
 
-        if (sprite.texture != null) {
+        if (sprite.sprite.texture != null) {
             for (int i = 0;i < textures.size();i++){
-                if (textures.get(i) == sprite.texture){
+                if (textures.get(i) == sprite.sprite.texture){
                     textId = i + 1;
                     break;
                 }
