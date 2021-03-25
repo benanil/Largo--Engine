@@ -4,20 +4,31 @@ import LargoEngine.Core.Values.vec3;
 
 public class Transform {
     public vec3 position;
-    public vec3 Scale;
+    public vec3 scale;
 
     public Transform() {
         position = vec3.Zero;
-        Scale = vec3.One;
+        scale = vec3.One;
     }
 
     public Transform(vec3 position) {
-        Scale = vec3.One;
+        scale = vec3.One;
         this.position = position;
     }
 
     public Transform(vec3 position,vec3 scale) {
-        Scale = scale;
+        this.scale = scale;
         this.position = position;
     }
+
+    public Transform copy()
+    {
+        return new Transform(new vec3(this.position),new vec3(this.scale));
+    }
+
+    public boolean equals(Transform b)
+    {
+        return this.position.equals(position) && this.scale.equals(scale);
+    }
+
 }

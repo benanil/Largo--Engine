@@ -52,7 +52,8 @@ public final class AssetManager {
     {
         File file = new File(resourceName);
 
-        assert spriteSheets.containsKey(file.getAbsolutePath()) : "error sprite sheet initializing";
+        if (!spriteSheets.containsKey(file.getAbsolutePath()))
+            throw new AssertionError("error sprite sheet initializing");
 
         return spriteSheets.get(file.getAbsolutePath());
     }

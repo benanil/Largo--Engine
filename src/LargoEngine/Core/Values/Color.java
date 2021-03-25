@@ -45,6 +45,10 @@ public class Color {
     public static final Color grey   () {return new Color(.5F, .5F, .5F, 1F); }
     public static final Color clear  () {return new Color(0F, 0F, 0F, 0F); }
 
+    public boolean equals(Color b)
+    {
+        return b.r == this.r && b.g == this.g && b.b == this.b;
+    }
 
     // Constructors
 

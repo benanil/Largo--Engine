@@ -1,9 +1,9 @@
 package LargoEngine.Core.input;
 
-import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
-import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
+import static org.lwjgl.glfw.GLFW.*;
 
 public final class KeyListenner {
+
     private static KeyListenner instance;
     private static boolean keyPressed[] = new boolean[350];
 
@@ -30,4 +30,32 @@ public final class KeyListenner {
         return get().keyPressed[keycode];
     }
 
+    public static boolean PressingAnyAxis()
+    {
+        return isKeyPressed(GLFW_KEY_A) || isKeyPressed(GLFW_KEY_D) || isKeyPressed(GLFW_KEY_W) || isKeyPressed(GLFW_KEY_S);
+    }
+
+    public static float Horizontal()
+    {
+        if (isKeyPressed(GLFW_KEY_A)){
+            return -1;
+        }
+        else if (isKeyPressed(GLFW_KEY_D)){
+            return 1;
+        }
+
+        return 0;
+    }
+
+    public static float Vertical()
+    {
+        if (isKeyPressed(GLFW_KEY_S)){
+            return -1;
+        }
+        else if (isKeyPressed(GLFW_KEY_W)){
+            return 1;
+        }
+
+        return 0;
+    }
 }

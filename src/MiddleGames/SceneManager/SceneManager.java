@@ -10,17 +10,19 @@ public final class SceneManager {
     public static final void ChangeScane(int newScene){
 
         if (currentSceneIndex != newScene) // zaten aynı sahne olduğu anlamına gelir
-        switch (newScene)
         {
-            case 0: CurrentScene = new LevelEditorScene();
-                    CurrentScene.Init();
-                    CurrentScene.Start();
-                break;
-            case 1: CurrentScene = new LevelScene();
-                    CurrentScene.Init();
-                    CurrentScene.Start();
-            default:
-                assert false : "Unknown scene" + newScene;
+            switch (newScene)
+            {
+                case 0: CurrentScene = new LevelEditorScene();
+                        CurrentScene.Init();
+                        CurrentScene.Start();
+                    break;
+                case 1: CurrentScene = new LevelScene();
+                        CurrentScene.Init();
+                        CurrentScene.Start();
+                default:
+                    assert false : "Unknown scene " + newScene;
+            }
         }
     }
 

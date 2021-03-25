@@ -98,9 +98,9 @@ public class RenderBatch {
         this.sprites[index] = spr;
         this.numSprites++;
 
-        if (spr.sprite.texture != null){
-            if (!textures.contains(spr.sprite.texture)){
-                textures.add(spr.sprite.texture);
+        if (spr.getTexture() != null){
+            if (!textures.contains(spr.getTexture())){
+                textures.add(spr.getTexture());
             }
         }
 
@@ -113,9 +113,21 @@ public class RenderBatch {
     }
 
     public void render() {
-        // For now, we will rebuffer all data every frame
-        glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+
+        boolean rebufferData = false;
+
+        for (int i = 0;i < numSprites; i++){
+            if (sprites[i].isDirty){
+                loadVertexProperties(i);
+                sprites[i].isDirty = false;
+                rebufferData = true;
+            }
+        }
+
+        if (rebufferData) {
+            glBindBuffer(GL_ARRAY_BUFFER, vboID);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+        }
 
         // Use shader
         shader.Use();
@@ -139,8 +151,8 @@ public class RenderBatch {
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
-        glEnableVertexAttribArray(2);
-        glEnableVertexAttribArray(3);
+        glDisableVertexAttribArray(2);
+        glDisableVertexAttribArray(3);
 
         glBindVertexArray(0);
 
@@ -159,16 +171,16 @@ public class RenderBatch {
 
         int textId = 0;
 
-        if (sprite.sprite.texture != null) {
+        if (sprite.getTexture() != null) {
             for (int i = 0;i < textures.size();i++){
-                if (textures.get(i) == sprite.sprite.texture){
+                if (textures.get(i) == sprite.getTexture()){
                     textId = i + 1;
                     break;
                 }
             }
         }
 
-        Color color = sprite.color;
+        Color color = sprite.getColor();
         vec2[] texCoords = sprite.getTexCoords();
 
         // Add vertices with the appropriate properties
@@ -184,8 +196,8 @@ public class RenderBatch {
             }
 
             // Load position
-            vertices[offset] = sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.Scale.x);
-            vertices[offset + 1] = sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.Scale.y);
+            vertices[offset] = sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x);
+            vertices[offset + 1] = sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y);
 
             // Load color
             vertices[offset + 2] = color.r;

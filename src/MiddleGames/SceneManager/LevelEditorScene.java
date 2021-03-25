@@ -6,13 +6,16 @@ import LargoEngine.Core.Components.SpriteSheet;
 import LargoEngine.Core.Components.Transform;
 import LargoEngine.Core.Renderer.Camera2D;
 import LargoEngine.Core.Renderer.CameraBase;
+import LargoEngine.Core.Time;
 import LargoEngine.Core.Values.vec3;
+import LargoEngine.Core.input.KeyListenner;
 import MiddleGames.AssetManager;
-
 
 public class LevelEditorScene extends Scene{
 
     Camera2D Camera;
+
+    GameObject player;
 
     public LevelEditorScene() {
         System.out.println("We are in level editor now");
@@ -26,15 +29,15 @@ public class LevelEditorScene extends Scene{
         obj1.AddComponent(new SpriteRenderer(spriteSheet.GetSprite(0)));
         this.AddGameObjectToScene(obj1);
 
-        GameObject obj2 = new GameObject("Object 2", new Transform(new vec3(400, 100), new vec3(256, 256)));
-        obj2.AddComponent(new SpriteRenderer(spriteSheet.GetSprite(10)));
-        this.AddGameObjectToScene(obj2);
+        player = new GameObject("Object 2", new Transform(new vec3(400, 100), new vec3(256, 256)));
+        player.AddComponent(new SpriteRenderer(spriteSheet.GetSprite(10),player));
+        this.AddGameObjectToScene(player);
     }
 
     private void LoadResources() {
          AssetManager.addSpriteSheet("Assets/Images/spriteSheet.png",
                  new SpriteSheet(AssetManager.GetTexture("Assets/Images/spriteSheet.png")
-                         ,8 , 8 , 26 , 0));
+                         ,16 , 16 , 26 , 0));
     }
 
     @Override
@@ -49,6 +52,10 @@ public class LevelEditorScene extends Scene{
 
         for (GameObject go : this.SceneObjects) {
             go.Update();
+        }
+        if (KeyListenner.PressingAnyAxis())
+        {
+            player.transform.position.Add(new vec3(KeyListenner.Horizontal() * 100 * Time.DeltaTime,KeyListenner.Vertical() * 100 * Time.DeltaTime));
         }
 
         this.renderer.Render();

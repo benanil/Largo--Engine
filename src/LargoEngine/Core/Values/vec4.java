@@ -98,6 +98,11 @@ public class vec4 {
         return this;
     }
 
+    public boolean equals(vec4 b)
+    {
+        return this.x == b.x && this.y == b.y && this.z == b.z && this.w == b.w;
+    }
+
     // METHODS
     public Vector4f ToJava(){
         return new Vector4f(x,y,z,w);

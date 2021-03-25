@@ -244,13 +244,6 @@ public final class Mathf {
     // Compares two floating point values if they are similar.
     public static boolean Approximately(float a, float b)
     {
-        // If a or b is zero, compare that the other is less or equal to epsilon.
-        // If neither a or b are 0, then find an epsilon that is good for
-        // comparing numbers at the maximum magnitude of a and b.
-        // Floating points have about 7 significant digits, so
-        // 1.000001f can be represented while 1.0000001f is rounded to zero,
-        // thus we could use an epsilon of 0.000001f for comparing values close to 1.
-        // We multiply this epsilon by the biggest magnitude of a and b.
         return Abs(b - a) < Max(0.000001f * Max(Abs(a), Abs(b)), Epsilon * 8);
     }
 

@@ -44,6 +44,11 @@ public class vec2 {
         y += value.y;
     }
 
+    public boolean equals(vec2 b)
+    {
+        return this.x == b.x && this.y == b.y;
+    }
+
     public void Set(float newX, float newY) { x = newX; y = newY; }
 
     public static vec2 Lerp(vec2 a, vec2 b, float t) {

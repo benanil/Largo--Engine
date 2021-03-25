@@ -14,7 +14,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class MainWindow {
+public class MainWindow implements Runnable{
     private int width, height;
     private String title;
     public long glfwWindow;
@@ -22,6 +22,7 @@ public class MainWindow {
     public Color backGroundColor;
 
     private static MainWindow window = null;
+    public static Thread MainThread;
 
     private MainWindow() {
         this.width = 1000;
@@ -31,11 +32,13 @@ public class MainWindow {
     }
 
     public static MainWindow get() {
-        if (MainWindow.window == null) {
-            MainWindow.window = new MainWindow();
+        if (window == null) {
+            window = new MainWindow();
         }
 
-        return MainWindow.window;
+        window.MainThread = new Thread(window,"Largo Engine");
+
+        return window;
     }
 
     public void run() {

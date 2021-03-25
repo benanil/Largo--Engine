@@ -14,6 +14,11 @@ public class vec3 {
     public float y;
     public float z;
 
+    public String ToString()
+    {
+        return "(" + "x: " + x + " y: " + y + " z: " + z + ")";
+    }
+
     public vec3(float x,float y) {
         this.x = x;
         this.y = y;
@@ -24,6 +29,12 @@ public class vec3 {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public vec3(vec3 value) {
+        this.x = value.x;
+        this.y = value.y;
+        this.z = value.z;
     }
 
     public vec3() {
@@ -94,6 +105,11 @@ public class vec3 {
         y -= value.y;
         z -= value.z;
         return this;
+    }
+
+    public boolean equals(vec3 b)
+    {
+        return this.x == b.x && this.y == b.y && this.z == b.z;
     }
 
     // METHODS

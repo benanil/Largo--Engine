@@ -1,7 +1,5 @@
 package LargoEngine.Core.Components;
 
-import MiddleGames.SceneManager.SceneManager;
-
 import java.util.ArrayList;
 
 public class GameObject extends Component{
@@ -69,7 +67,10 @@ public class GameObject extends Component{
 
     @Override
     public void Update() {
-
+        for (int i = 0;i < Components.size();i++)
+        {
+            Components.get(i).Update();
+        }
     }
 
     @Override
