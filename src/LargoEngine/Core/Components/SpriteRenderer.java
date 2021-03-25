@@ -1,5 +1,6 @@
 package LargoEngine.Core.Components;
 
+import LargoEngine.Core.Renderer.RenderBatch;
 import LargoEngine.Core.Renderer.Texture;
 import LargoEngine.Core.Values.Color;
 import LargoEngine.Core.Values.vec2;
@@ -17,6 +18,7 @@ public class SpriteRenderer extends Component {
     {
         this.color = color;
         this.sprite = new Sprite(null);
+
     }
 
     public SpriteRenderer(Sprite sprite)
@@ -25,25 +27,18 @@ public class SpriteRenderer extends Component {
         this.sprite = sprite;
     }
 
-    public SpriteRenderer(Sprite sprite,GameObject gameObject)
-    {
-        this.color = Color.white();
-        this.sprite = sprite;
-        this.gameObject = gameObject;
-        lastTransform = this.gameObject.transform.copy();
-    }
-
     @Override
     public void Update() {
         if (lastTransform.equals(gameObject.transform))
         {
-            lastTransform = gameObject.transform;
+            lastTransform = gameObject.transform.copy();
             isDirty = true;
         }
     }
 
     @Override
     public void Start() {
+        lastTransform = gameObject.transform.copy();
     }
 
     public Texture getTexture() {
@@ -74,5 +69,6 @@ public class SpriteRenderer extends Component {
             this.color = color;
         }
     }
+
 
 }

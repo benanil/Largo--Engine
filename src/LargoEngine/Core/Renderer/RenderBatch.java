@@ -17,6 +17,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class RenderBatch {
+
     // Vertex
     // ======
     // Pos               Color
@@ -163,7 +164,7 @@ public class RenderBatch {
         shader.Detach();
     }
 
-    private void loadVertexProperties(int index) {
+    private void loadVertexProperties(final int index) {
         SpriteRenderer sprite = this.sprites[index];
 
         // Find offset within array (4 vertices per sprite)
@@ -226,7 +227,7 @@ public class RenderBatch {
         return elements;
     }
 
-    private void loadElementIndices(int[] elements, int index) {
+    private void loadElementIndices(int[] elements, final int index) {
         int offsetArrayIndex = 6 * index;
         int offset = 4 * index;
 

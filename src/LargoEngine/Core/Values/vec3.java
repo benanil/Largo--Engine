@@ -116,6 +116,10 @@ public class vec3 {
     public Vector3f ToJava(){
         return new Vector3f(x,y,z);
     }
+    public vec3 Copy()
+    {
+        return new vec3(x,y,z);
+    }
 
     public void Lerp(vec3 b, float t)
     {

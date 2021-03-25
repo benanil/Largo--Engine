@@ -98,6 +98,11 @@ public class vec4 {
         return this;
     }
 
+    public vec4 Copy()
+    {
+        return new vec4(x,y,z,w);
+    }
+
     public boolean equals(vec4 b)
     {
         return this.x == b.x && this.y == b.y && this.z == b.z && this.w == b.w;

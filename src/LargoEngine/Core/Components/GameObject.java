@@ -75,6 +75,9 @@ public class GameObject extends Component{
 
     @Override
     public void Start() {
-
+        for (int i = 0;i < Components.size();i++)
+        {
+            Components.get(i).Start();
+        }
     }
 }

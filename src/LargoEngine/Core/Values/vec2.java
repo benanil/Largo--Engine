@@ -8,6 +8,8 @@ public class vec2 {
 
     public static final vec2 Zero = new vec2(0,0);
     public static final vec2 One = new vec2(1,1);
+    public static final vec2 Up = new vec2(1,1);
+    public static final vec2 Down = new vec2(1,1);
 
     public vec2() {
         this.x = 0;
@@ -47,6 +49,11 @@ public class vec2 {
     public boolean equals(vec2 b)
     {
         return this.x == b.x && this.y == b.y;
+    }
+
+    public vec2 Copy()
+    {
+        return new vec2(x,y);
     }
 
     public void Set(float newX, float newY) { x = newX; y = newY; }
