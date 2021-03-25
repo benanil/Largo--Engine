@@ -29,6 +29,9 @@
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-vma.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-vulkan.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-app-1.81.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-binding-1.81.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-lwjgl3-1.81.2.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/joml-1.10.1-javadoc.jar!/" />
@@ -46,6 +49,9 @@
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-stb-javadoc.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-vma-javadoc.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-vulkan-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-app-1.81.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-binding-1.81.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-lwjgl3-1.81.2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/lib/joml-1.10.1-sources.jar!/" />
@@ -64,6 +70,9 @@
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-stb-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-vma-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-vulkan-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-app-1.81.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-binding-1.81.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/imgui-lwjgl3-1.81.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

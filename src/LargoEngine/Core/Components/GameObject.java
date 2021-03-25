@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class GameObject extends Component{
     public Transform transform;
+    public int zIndex;
 
     private ArrayList<GameObject> Childs = new ArrayList<GameObject>();
     private ArrayList<Component> Components = new ArrayList<Component>();
@@ -18,6 +19,13 @@ public class GameObject extends Component{
     public GameObject(String name,Transform transform) {
         Name = name;
         this.transform = transform;
+        this.zIndex = 0;
+    }
+
+    public GameObject(String name,Transform transform,int zindex) {
+        Name = name;
+        this.transform = transform;
+        this.zIndex = zindex;
     }
 
     public <T extends Component> T  GetComponent(Class<T> componentClass){

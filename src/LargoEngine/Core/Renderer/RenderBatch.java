@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL20C.glVertexAttribPointer;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
-public class RenderBatch {
+public class RenderBatch implements Comparable<RenderBatch>{
 
     // Vertex
     // ======
@@ -44,8 +44,9 @@ public class RenderBatch {
     private int vaoID, vboID;
     private int maxBatchSize;
     private Shader shader;
+    public int zIndex;
 
-    public RenderBatch(int maxBatchSize,String shaderPath) {
+    public RenderBatch(int maxBatchSize,String shaderPath,int zIndex) {
         shader = AssetManager.GetShader(shaderPath);
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
@@ -56,6 +57,7 @@ public class RenderBatch {
         this.numSprites = 0;
         this.hasRoom = true;
         textures = new ArrayList<Texture>();
+        this.zIndex = zIndex;
     }
 
     public void start() {
@@ -90,7 +92,7 @@ public class RenderBatch {
 
     public void addSprite(SpriteRenderer spr) {
         if (textures.size() > 7){
-            SceneManager.CurrentScene.renderer.AddBatch(spr,"Assets/Shaders/Basic.glsl");
+            SceneManager.CurrentScene.renderer.AddBatch(spr,"Assets/Shaders/Basic.glsl",zIndex);
             return;
         }
 
@@ -245,5 +247,10 @@ public class RenderBatch {
 
     public boolean hasRoom() {
         return this.hasRoom;
+    }
+
+    @Override
+    public int compareTo(RenderBatch o) {
+        return Integer.compare(this.zIndex, o.zIndex);
     }
 }

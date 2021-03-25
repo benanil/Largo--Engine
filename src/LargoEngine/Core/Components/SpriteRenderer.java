@@ -18,7 +18,6 @@ public class SpriteRenderer extends Component {
     {
         this.color = color;
         this.sprite = new Sprite(null);
-
     }
 
     public SpriteRenderer(Sprite sprite)

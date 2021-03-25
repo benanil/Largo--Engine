@@ -9,6 +9,7 @@ import LargoEngine.Core.input.KeyListenner;
 import MiddleGames.AssetManager;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -26,23 +27,23 @@ public class LevelEditorScene extends Scene{
         SpriteSheet spriteSheet = AssetManager.getSpriteSheet("Assets/Images/spriteSheet.png");
 
         Camera = new Camera2D(new vec3(-250,-0,0));
-        GameObject obj1 = new GameObject("Object 1", new Transform(new vec3(100, 100), new vec3(256, 256)));
+        GameObject obj1 = new GameObject("Object 1", new Transform(new vec3(100, 100), new vec3(256, 256)),0);
         obj1.AddComponent(new SpriteRenderer(spriteSheet.GetSprite(0)));
         this.AddGameObjectToScene(obj1);
 
-        player = new GameObject("Object 2", new Transform(new vec3(400, 100), new vec3(256, 256)));
+        player = new GameObject("Object 2", new Transform(new vec3(400, 100), new vec3(256, 256)),1);
         player.AddComponent(new SpriteRenderer(spriteSheet.GetSprite(10)));
 
         var animation = new ArrayList<Animation>();
 
-        Queue<Sprite> run = new PriorityQueue<>();
+        ArrayList<Sprite> run = new ArrayList<>();
         run.add(spriteSheet.GetSprite(1));
         run.add(spriteSheet.GetSprite(2));
         run.add(spriteSheet.GetSprite(3));
 
         animation.add(new Animation(run,true,"run"));
 
-        player.AddComponent(new Animator(animation,player.GetComponent(SpriteRenderer.class),.3f));
+        player.AddComponent(new Animator(animation,player.GetComponent(SpriteRenderer.class),.2f));
 
         this.AddGameObjectToScene(player);
 

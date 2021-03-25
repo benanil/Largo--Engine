@@ -89,7 +89,7 @@ public class MainWindow implements Runnable{
 
 
         // Make the OpenGL context current
-            glfwMakeContextCurrent(glfwWindow);
+        glfwMakeContextCurrent(glfwWindow);
         // Enable v-sync
         glfwSwapInterval(1);
 
@@ -102,6 +102,10 @@ public class MainWindow implements Runnable{
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
+
         SceneManager.ChangeScane(0);
     }
 

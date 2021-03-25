@@ -1,38 +1,35 @@
 package LargoEngine.Core.Components;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import LargoEngine.Core.Mathf;
+
+import java.util.List;
 
 public class Animation {
-    public Queue<Sprite> frames;
-    public Queue<Sprite> usedFrames;
+    public List<Sprite> frames;
     public String name;
     public boolean loop;
+    private int allFrames;
+    private int currentFrame;
 
-    public Animation(Queue<Sprite> frames, boolean loop , String name) {
+    public Animation(List<Sprite> frames, boolean loop , String name) {
         this.name = name;
         this.frames = frames;
         this.loop = loop;
-        usedFrames = new PriorityQueue<>();
+        allFrames = frames.size()-1;
+        currentFrame = -1;
     }
 
     public Sprite Use()
     {
-        var oldFrame = frames.remove();
         if (loop) {
-            frames.add(oldFrame);
+            currentFrame++;
+            currentFrame = (int)Mathf.Repeat(currentFrame,allFrames);
+            return frames.get(currentFrame);
         }
         else {
-            usedFrames.add(oldFrame);
-        }
-        return oldFrame;
-    }
 
-    public void Reload()
-    {
-        for (Sprite sprite: usedFrames){
-            frames.add(sprite);
         }
+        return null;
     }
 
 }
