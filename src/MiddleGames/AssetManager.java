@@ -19,7 +19,7 @@ public final class AssetManager {
             return Shaders.get(filePath);
         }
         else{
-            final var shader = new Shader(filePath);
+            final Shader shader = new Shader(filePath);
             shader.Compile();
             Shaders.put(filePath,shader);
             return shader;

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import imgui.*;
 
 public class Renderer {
     private static final int MAX_BATCH_SIZE = 1000;

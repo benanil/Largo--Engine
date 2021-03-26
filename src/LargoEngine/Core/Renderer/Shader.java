@@ -112,7 +112,7 @@ public class Shader {
 
         success = glGetProgrami(shaderProgram,GL_LINK_STATUS);
         if (success == GL_FALSE){
-            var len= glGetProgrami(shaderProgram,GL_INFO_LOG_LENGTH);
+            int len= glGetProgrami(shaderProgram,GL_INFO_LOG_LENGTH);
             System.out.println(glGetProgramInfoLog(shaderProgram,len));
             assert  false: "failed shader linking";
         }

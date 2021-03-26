@@ -145,7 +145,7 @@ public class vec3 {
             this.z = target.z;
         }
 
-        var dist = (float)Math.sqrt(sqdist);
+        float dist = (float)Math.sqrt(sqdist);
 
         this.x = this.x + toVector_x / dist * maxDistanceDelta;
         this.y = this.y + toVector_y / dist * maxDistanceDelta;

@@ -9,9 +9,6 @@ import LargoEngine.Core.input.KeyListenner;
 import MiddleGames.AssetManager;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class LevelEditorScene extends Scene{
 
@@ -34,7 +31,7 @@ public class LevelEditorScene extends Scene{
         player = new GameObject("Object 2", new Transform(new vec3(400, 100), new vec3(256, 256)),1);
         player.AddComponent(new SpriteRenderer(spriteSheet.GetSprite(10)));
 
-        var animation = new ArrayList<Animation>();
+        ArrayList<Animation> animation = new ArrayList<Animation>();
 
         ArrayList<Sprite> run = new ArrayList<>();
         run.add(spriteSheet.GetSprite(1));

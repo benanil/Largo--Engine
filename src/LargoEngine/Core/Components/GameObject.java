@@ -66,7 +66,7 @@ public class GameObject extends Component{
 
         for (GameObject go : Childs)
         {
-            var goResult = go.GetComponentInChildren(componentClass);
+            T goResult = go.GetComponentInChildren(componentClass);
             if (goResult != null)
                 return ((T) goResult);
         }

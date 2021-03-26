@@ -15,14 +15,15 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class MainWindow implements Runnable{
-    private int width, height;
+    public int width, height;
     private String title;
     public long glfwWindow;
 
     public Color backGroundColor;
 
     private static MainWindow window = null;
-    public static Thread MainThread;
+
+    private ImGuiLayer imguilayer;
 
     private MainWindow() {
         this.width = 1000;
@@ -34,9 +35,9 @@ public class MainWindow implements Runnable{
     public static MainWindow get() {
         if (window == null) {
             window = new MainWindow();
+            window.imguilayer = new ImGuiLayer(window.glfwWindow);
+            window.imguilayer.initImGui();
         }
-
-        window.MainThread = new Thread(window,"Largo Engine");
 
         return window;
     }
@@ -127,6 +128,8 @@ public class MainWindow implements Runnable{
 
             if(Time.DeltaTime >= 0)
                 SceneManager.CurrentScene.Update();
+
+            imguilayer.update(Time.DeltaTime);
 
             glfwSwapBuffers(glfwWindow);
 

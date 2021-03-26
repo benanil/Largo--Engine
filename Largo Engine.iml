@@ -11,23 +11,13 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/imgui-app-1.81.2.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/imgui-binding-1.81.2.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/imgui-lwjgl3-1.81.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/lwjgl-nuklear-natives-windows.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/lwjgl-nuklear.jar!/" />
         </CLASSES>
         <JAVADOC>
-          <root url="jar://$MODULE_DIR$/lib/imgui-app-1.81.2-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/imgui-binding-1.81.2-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/imgui-lwjgl3-1.81.2-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/lwjgl-nuklear-javadoc.jar!/" />
         </JAVADOC>
-        <NATIVE>
-          <root url="file://$MODULE_DIR$/lib" />
-        </NATIVE>
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lib/imgui-app-1.81.2-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/imgui-binding-1.81.2-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/imgui-lwjgl3-1.81.2-sources.jar!/" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
   </component>
